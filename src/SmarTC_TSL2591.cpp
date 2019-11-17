@@ -106,7 +106,7 @@ void SmarTC_TSL2591::setConfig(tsl2591_it_e integration, tsl2591_g_e gain)
 uint32_t SmarTC_TSL2591::getFullLuminosity(void)
 {
   if (!i_init)
-    return 0;
+    return -1;
 
   enable();
 
@@ -208,7 +208,12 @@ uint8_t SmarTC_TSL2591::read8(uint8_t reg)
   Wire.write(reg);
   Wire.endTransmission();
 
-  Wire.requestFrom(TSL2591_ADDR, 1);
+  if ( 1 != Wire.requestFrom(TSL2591_ADDR, 1) )
+  {
+    Serial.printf("Fail to read8\n");
+    return (uint8_t)-1;
+  }
+
   x = Wire.read();
 
   return x;
@@ -225,7 +230,12 @@ uint16_t SmarTC_TSL2591::read16(uint8_t reg)
   Wire.write(reg);
   Wire.endTransmission();
 
-  Wire.requestFrom(TSL2591_ADDR, 2);
+  if ( 2 != Wire.requestFrom(TSL2591_ADDR, 2) )
+  {
+    Serial.printf("Fail to read16\n");
+    return (uint16_t)-1;
+  }
+
   t = Wire.read();
   x = Wire.read();
 
