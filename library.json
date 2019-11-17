@@ -1,0 +1,32 @@
+{
+    "name": "SmarTC_TSL2591",
+    "version": "1.0.0",
+    "keywords": "sensor, light, arduino",
+    "description": "Arduino library for TSL2591 sensor management over I2C bus",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Cognitician/SmarTC_TSL2591.git"
+    },
+    "authors": [
+        {
+            "name": "Clément TOCHE",
+            "email": "ad@toche.fr",
+            "maintainer": true
+        }
+    ],
+    "license": "GPL-3.0-only",
+    "export":{
+        "include":
+        [
+            "src/*",
+            "include/*"
+        ]
+    },
+    "frameworks":"Arduino",
+    "platforms":[
+        "Atmel AVR",
+        "Espressif 32",
+        "Espressif 8266"
+    ],
+    "dependencies":{ }
+}
